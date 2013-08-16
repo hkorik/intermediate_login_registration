@@ -1,0 +1,17 @@
+<% content_for :title do %>
+ Login Page
+<% end %>
+<h1>Login Page</h1>
+
+<% if flash[:error_message] %>
+		<p><%= flash[:error_message] %></p>
+<% end %>
+
+<%= simple_form_for(:session, :url => sessions_path) do |f| %>
+	<%= f.input :email %>
+	<%= f.input :password %>
+	<%= f.button :submit, value: "Login" %>
+	<a href='/register'>Don't have an account? Register</a>
+<% end %>
+
+

@@ -1,0 +1,20 @@
+<% content_for :title do %>
+	Display all users
+<% end %>
+<h1>Display All Users</h1>
+<%= link_to 'Logout', signout_path, :method => :post, :html => {:class => 'float_right'}  %>
+<table class="table">
+	<thead>
+		<th>First name</th>
+		<th>Last name</th>
+		<th>Email address</th>
+	</thead>
+<% @users.each do |user| %>
+	<tr>
+		<td><%= user.first_name %></td>		
+		<td><%= user.last_name %></td>
+		<td><%= user.email %></td>
+		<td><a class="btn" href="<%= user_path(user.id) %>">Show</a></td>
+	</tr>
+<% end %>
+</table>

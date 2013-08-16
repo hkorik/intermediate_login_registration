@@ -1,0 +1,19 @@
+<% content_for :title do %>
+ Profile Page
+<% end %>
+<h1>Users Profile Page</h1>
+<h1>Hi <%= @user.first_name.upcase %>!</h1>
+
+<%= link_to 'Logout', signout_path, :method => :post, :html => {:class => 'float_right'}  %>
+
+<% if flash[:error_message] %>
+	<p><%= flash[:error_message] %></p>
+<% elsif flash[:success_message] %>
+	<p><%= flash[:success_message] %></p>
+<% end %>
+
+<%= simple_form_for(:comment, :url => comments_path) do |f| %>
+	<%= f.hidden_field :receiver_id, value: @user.id %>
+	<%= f.text_area :content %>
+	<%= f.button :submit, value: "Add a Comment" %>
+<% end %>
